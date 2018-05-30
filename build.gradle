@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group "com.helmes"
+version "1.0-SNAPSHOT"
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
+
+apply from: "gradle/docker.gradle"
+
+springBoot {
+    mainClass = "com.helmes.docker.SampleApplication"
+}
+
+bootRun {
+    systemProperties System.properties
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    testCompile("junit:junit:4.12")
+}
+
+clean {
+    delete "out"
+}

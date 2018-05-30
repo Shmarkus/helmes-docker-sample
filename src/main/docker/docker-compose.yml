@@ -1,0 +1,9 @@
+version: '2'
+services:
+    sample-app:
+        image: helmesregistrytest.azurecr.io/samples/sample:latest
+        environment:
+            - SPRING_PROFILES_ACTIVE=dev
+            - APP_SLEEP=10
+        ports:
+            - 80:80
